@@ -7,13 +7,13 @@ require(tidycensus)
 gender_data <- data.frame()
 
 # User Selections
-most_recent_year <- 2023
+most_recent_year <- 2023 # select the most recent year
 starting_year <- 2009
 state <- "55" # Wisconsin state fips code
 cache_table <- "TRUE" # save some memory and time
 geography <- "county" # location we want the data
 moe <- 90 # acceptable numeric margin of error 
-acsx <- "acs5" # Select version and year of acs data
+acsx <- "acs5" # select version and year of acs data
 output <- "tidy" # format of data output
 
 # all the gender data we need
@@ -94,7 +94,7 @@ for (i in most_recent_year[[1]]:starting_year[[1]]){
                variable == "B01001F_017" ~ "Female",
                variable == "B01001G_017" ~ "Female",
                variable == "B01001I_017" ~ "Female",
-               variable == "B01001H_002" ~ "Female",
+               variable == "B01001H_017" ~ "Female",
 
                .default = as.character(variable)
              ),
