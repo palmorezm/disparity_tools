@@ -1,0 +1,13 @@
+test... having tech issues
+```{r}
+
+get_county_pops = function(years){
+  for (yr in years){
+      print(yr)
+  }
+}
+
+get_county_pops(list(2009, 2010))
+
+
+```
