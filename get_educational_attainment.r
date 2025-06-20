@@ -3,11 +3,8 @@
 require(dplyr)
 require(tidycensus)
 
-# libary(emspackage)
-# pull_data(2023, 'populations')
-
 # Create empty data frame for storing later
-gender_data <- data.frame()
+educational_attainment_data <- data.frame()
 
 # User Selections
 most_recent_year <- 2023 # select the most recent year
