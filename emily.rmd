@@ -1,13 +1,83 @@
-test... having tech issues
+
 ```{r}
 
-get_county_pops = function(years){
-  for (yr in years){
-      print(yr)
-  }
-}
+library(usethis)
+library(devtools)
+library(tidyverse)
+library(tidycensus)
+library(dplyr)
+# install.packages("devtools", "usethis", "roxygen2", "testhat")
 
-get_county_pops(list(2009, 2010))
+```
+
+
+```{r}
+
+# API keyver
+census_api_key("afc5cb6a204acc0021390161be24a3b933a2c4ea", install = TRUE)
+# year <- 2022 # input year of data 
+
+# Global Factors
+key <- NULL # hidden but shows API key 
+# for security, this key should be loaded in each session
+year <- 2022 # input year of data 
+acsx <- "acs5" # Select version and year of acs data
+output <- "tidy" # format of data output
+state <- 55 # FIPS code location of interest
+zcta <- NULL # tabulate by zip code tabulation areas
+moe <- 90 # acceptable num+eric margin of error 
+geography <- "county" # location specific data
+show_call <- FALSE # if TRUE, display call made to Census API
+cache_table <- TRUE # whether or not to cache table names for faster future access. Defaults to FALSE
+
+
+
+
+
+
+
+
+# get_county_pops = function(years){
+#   for (yr in years){
+#       print(yr)
+#   }
+# }
+
+# get_county_pops(list(2009, 2010))
+
+
+```
+
+
+
+```{r}
+
+total = get_acs(
+  geography = geography,
+  variables = c("B01001A_001", "B01001B_001", "B01001C_001", "B01001D_001", "B01001E_001", "B01001F_001", "B01001G_001", "B01001I_001"),
+  year = year,
+  state = state,
+  cache_table = cache_table
+) 
+
+total = total %>%
+  mutate(race =
+           case_when(
+             variable == "B01001A_001" ~ "white",
+             variable == "B01001B_001" ~ "black",
+             variable == "B01001C_001" ~ "aian",
+             variable == "B01001D_001" ~ "asian",
+             variable == "B01001E_001" ~ "nhpi",
+             variable == "B01001F_001" ~ "other",
+             variable == "B01001G_001" ~ "more",
+             variable == "B01001I_001" ~ "hispanic",
+             .default = as.character(variable)))
+
+
+total = total %>% 
+  group_by(NAME) %>% 
+  mutate(county_tot_pop = sum(estimate))
+
 
 
 ```

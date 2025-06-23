@@ -7,7 +7,7 @@
 
 # API key
 census_api_key("afc5cb6a204acc0021390161be24a3b933a2c4ea", install = TRUE)
-
+# year <- 2022 # input year of data 
 
 # Global Factors
 key <- NULL # hidden but shows API key 
