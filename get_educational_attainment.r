@@ -59,6 +59,43 @@ for (i in most_recent_year[[1]]:starting_year[[1]]){
                variable == "B01001I_002" ~ "Hispanic or Latino",
                variable == "B01001H_002" ~ "White Alone, Not Hispanic or Latino",
 
+# Table IDs for the below
+# B15002B_003
+# B15002B_004
+# B15002B_005
+# B15002B_006
+# B15002B_007
+# B15002B_008
+# B15002B_009
+# B15002B_010
+
+            # Male
+                # Less than 9th grade
+                # 9th to 12th grade, no diploma
+                # Regular high school diploma
+                # GED or alternative credential
+                # Some college, no degree
+                # Associate's degree
+                # Bachelor's degree
+                # Graduate or professional degree
+
+# Table IDs for female same edu things
+# B15002B_012
+# B15002B_013
+# B15002B_014
+# B15002B_015
+# B15002B_016
+# B15002B_017
+# B15002B_018
+# B15002B_019
+
+                # Housing Costs as a Percentage of Household Income in the Past 12 Months (Hispanic or Latino Householder)
+                # - B25140I	
+                #  American Community Survey, ACS 1-Year Estimates Detailed Tables, 
+                # Table B25140I, 2023, https://data.census.gov/table/ACSDT1Y2023.B25140I?q=B25140I: 
+                # Housing Costs as a Percentage of Household Income in the Past 12 Months 
+                # (Hispanic or Latino Householder)&g=040XX00US55. Accessed on December 2, 2024.
+
                # Females
                variable == "B01001A_017" ~ "White Alone",
                variable == "B01001B_017" ~ "Black or African American Alone",
