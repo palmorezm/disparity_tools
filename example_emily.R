@@ -60,7 +60,7 @@ get_acs(
 ) %>% 
   mutate(
     race = case_when(
-      variable = "B01001A_001" ~ "white", 
+      variable == "B01001A_001" ~ "white", 
       variable = "B01001B_001" ~ "black or african american",
       variable = "B01001C_001" ~ "american indian and alaskan native")
     )
