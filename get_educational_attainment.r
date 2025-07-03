@@ -49,8 +49,10 @@ for (i in most_recent_year[[1]]:starting_year[[1]]){
     mutate(race = 
              case_when(
                # Males
-               variable == "B01001A_002" ~ "White Alone",
-               variable == "B01001B_002" ~ "Black or African American Alone",
+               # This was started but did not finish 
+               variable == "B01001A_002" ~ "Less than 9th grade - White Alone",
+               variable == "B01001B_002" ~ "9th to 12th grade, no diploma - White Alone", 
+               #  and onwards... 
                variable == "B01001C_002" ~ "American Indian and Alaskan Native Alone",
                variable == "B01001D_002" ~ "Asian Alone",
                variable == "B01001E_002" ~ "Native Hawaiian and Other Pacific Islander Alone",
@@ -59,15 +61,16 @@ for (i in most_recent_year[[1]]:starting_year[[1]]){
                variable == "B01001I_002" ~ "Hispanic or Latino",
                variable == "B01001H_002" ~ "White Alone, Not Hispanic or Latino",
 
-# Table IDs for the below
-# B15002B_003
-# B15002B_004
-# B15002B_005
-# B15002B_006
-# B15002B_007
-# B15002B_008
-# B15002B_009
-# B15002B_010
+# TODO: Add these with each racial/ethnic group
+    # Table IDs for the below
+    # B15002B_003
+    # B15002B_004
+    # B15002B_005
+    # B15002B_006
+    # B15002B_007
+    # B15002B_008
+    # B15002B_009
+    # B15002B_010
 
             # Male
                 # Less than 9th grade
@@ -89,6 +92,7 @@ for (i in most_recent_year[[1]]:starting_year[[1]]){
 # B15002B_018
 # B15002B_019
 
+          # TODO: Add this one with each racial/ethnic group
                 # Housing Costs as a Percentage of Household Income in the Past 12 Months (Hispanic or Latino Householder)
                 # - B25140I	
                 #  American Community Survey, ACS 1-Year Estimates Detailed Tables, 
@@ -140,4 +144,43 @@ for (i in most_recent_year[[1]]:starting_year[[1]]){
   gender_data <- rbind(gender_data, tmp)
 }
 
+# TODO: Addtional table to get based on ID:
+# "MEDIAN AGE BY SEX (WHITE ALONE)"
+# But for each race/ethnic group and Male & Female
+# White alone example:
+  # B01002_001 (Total)
+  # B01002A_002 (Male)
+  # B01002A_003 (Female)
+# Black alone example:
+  # B01002_001 (Total)
+  # B01002B_002 (Male)
+  # B01002B_003 (Female)
+
+
+# TODO next:
+# Turn these scripts into a function. 
+# Name this function something descriptive
+# Ex: GET_Race_Ethnicity()
+# Inputs should be:
+  # common language text selections
+  # followed by a numerical or text data type representing the year or years (for now) 
+# Ex: I = ( ... , c('Population', 'Median Age', 2023)) 
+# Default inputs should be (unless otherwise specified by user)
+  # 'Population' , specifically total population for each race/ethnic goup
+  # Most recent year 
+    # Feel free to use = current_year_char <- format(Sys.Date(), "%Y") or similar
+    # May need to adjust for a year or two earlier given what's availble from census 
+# Ex: O = data.frame of values with each value
+  # split by each race/ethnic group and
+  # sex (as applicable)
+  # estimate (the actual number they think it is)
+  # moe or Margin of error (as available)
+  # variable - these are the corresponding table IDs
+  # County name
+  # GEOID unique code
+
+# Once we have this we can build on it
+# Start to do math and later make forecasts/predictions
+# It might be interesting to show 
+# how quickly diversity is happening in each county and across the state
 
