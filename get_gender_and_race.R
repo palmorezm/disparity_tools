@@ -19,6 +19,27 @@ moe <- 90 # acceptable numeric margin of error
 acsx <- "acs5" # select version and year of acs data
 output <- "tidy" # format of data output
 
+
+# Using PEP
+# 2020-2022
+get_estimates(geography = "state",
+  product = "characteristics",
+  breakdown = c("RACE", "HISP","SEX"),
+  state = "WI",
+  year = 2022,
+  time_series = TRUE,
+  output = "tidy")
+
+
+# sex: 0 = both, 1 = male, 2 = female
+# hisp: 0 = both, 1 = non-hispanic, 2 = hispanic
+# race: 1 = White alone, 2 = Black alone, 3 = Native American alone 4 = Asian Alone
+# 5 = Native Hawaiian and other pacific islander alone, 6 = two or more races
+
+
+
+
+
 # all the gender data we need
 for (i in most_recent_year[[1]]:starting_year[[1]]){
   tmp <- get_acs(
